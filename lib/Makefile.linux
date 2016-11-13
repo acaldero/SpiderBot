@@ -1,0 +1,41 @@
+# ------------------------------ MAKEFILE ----------------------- 
+ 
+
+
+# --- 1.- Opciones del sistema base ---
+
+MAKE          = make
+SRCDIR        =   .
+LIB_PATH      = -L/usr/lib
+INCLUDE_PATH  = -I./
+DIR           = corelib  weblib  wpplib  uilib
+
+
+# --- 2.- Reglas de compilacion -------
+
+all:    init  compo
+fast:         compo
+
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    Libraries" 
+	@echo "   -----------" 
+	@echo "" 
+
+compo:
+	@set -e;  for i in $(DIR);   do $(MAKE) -C $$i -f Makefile.linux fast ;  done
+
+
+
+clean: 
+	@echo "   Removing trash..."
+	@set -e;  for i in $(DIR);   do $(MAKE) -C $$i -f Makefile.linux clean ;  done
+	@echo "   Trash succesfully removed !."
+
+
+
+# ----------------------------- END MAKEFILE -------------------- 
+

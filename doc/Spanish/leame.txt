@@ -1,0 +1,69 @@
+ 
+  Copyright 1997-1998 
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+   Mi agracedimiento a todas las personas que me han ayudado,
+   ofreciento parte de su tiempo ...
+ 
+   Se aplicara la GPL :
+
+
+  GNU --------------------------------------------------------------------
+  
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; either version 2 of the License, or
+      (at your option) any later version.
+   
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+   
+      Please, write to :
+         the Free Software Foundation, Inc., 
+         675 Mass Ave, 
+         Cambridge, 
+         MA 02139, 
+         USA.
+      and you will received a copy of the GNU General Public License
+
+
+  Listado ----------------------------------------------------------------
+    
+      leeme.txt
+        este fichero.
+
+      mas_informacion.txt
+        enlaces a informacion sobre robots robots...
+
+      como_compilar.txt
+        some tips to compile...
+
+      SpiderBot_como_usar.txt
+        opciones para SpiderBot...
+        SpiderBot es un robot de descarga muy simple. Solo las opciones habituales.
+
+      wcopy_como_usar.txt
+        opciones para wcopy...
+        wcopy es un robot de descarga mas completo. Variadas opciones de todo tipo.
+
+      wdir_como_usar.txt
+        opciones para wdir...
+        wdir busca enlaces existentes en las paginas de un sitio web.
+
+      wcat_como_usar.txt
+        opciones para wcat...
+        wcat imprime en pantalla las paginas de un sitio web.
+
+      mklocal_como_usar.txt
+        opciones para mklocal...
+        mklocal permite la navegacion offline de un sitio web bajado con
+        wcopy.
+
+
+  ------------------------------------------------------------------------
+
+
+  

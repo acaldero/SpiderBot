@@ -1,0 +1,111 @@
+#---------------------- corelib' MAKEFILE -------------------- 
+ 
+
+
+
+# --- 1.- Opciones del sistema base ---
+
+CC        = @CC@
+LIBPATH   = -L/usr/lib
+HPATH     = -I. -I..
+SRCDIR    = .
+CFLAGS    = @DEVEL@ -Wall -D@OS@ -D_REENTRANT
+LIBLINK   = @LIBLINK@
+
+
+
+# --- 2.- Perfil de la libreria -------
+
+LIBNAME   = corelib.a
+OBJETOS   = \
+            $(SRCDIR)/l_debug/l_debug.o              \
+            $(SRCDIR)/l_debug/l_debug_msg.o          \
+            $(SRCDIR)/l_debug/l_debug_fsm.o          \
+            \
+            $(SRCDIR)/l_alloc/x_alloc.o              \
+            \
+            $(SRCDIR)/l_adt/l_buffa.o                \
+            $(SRCDIR)/l_adt/l_buffw.o                \
+            $(SRCDIR)/l_adt/l_darray.o               \
+            $(SRCDIR)/l_adt/l_dnodo.o                \
+            $(SRCDIR)/l_adt/l_dstack.o               \
+            $(SRCDIR)/l_adt/l_dhash.o                \
+            $(SRCDIR)/l_adt/l_mfile.o                \
+            \
+            $(SRCDIR)/l_cdt/l_strli.o                \
+            $(SRCDIR)/l_cdt/l_dirstk.o               \
+            $(SRCDIR)/l_cdt/l_iobuff.o               \
+            \
+            $(SRCDIR)/l_string/x_string.o            \
+            $(SRCDIR)/l_string/l_fchset.o            \
+            $(SRCDIR)/l_string/l_fstr.o              \
+            $(SRCDIR)/l_string/l_ftoken.o            \
+            $(SRCDIR)/l_string/l_fre.o               \
+            $(SRCDIR)/l_string/l_line.o              \
+            $(SRCDIR)/l_string/l_trans.o             \
+            \
+            $(SRCDIR)/l_dir/v_dir.o                  \
+            $(SRCDIR)/l_dir/x_dir.o                  \
+            \
+            $(SRCDIR)/l_file/l_file.o                \
+            $(SRCDIR)/l_file/x_print.o               \
+            \
+            $(SRCDIR)/l_time/v_time.o                \
+            $(SRCDIR)/l_time/x_time.o                \
+            \
+            $(SRCDIR)/l_thread/v_thread.o            \
+            $(SRCDIR)/l_thread/x_thread.o            \
+            \
+            $(SRCDIR)/l_net/l_socket.o               \
+            $(SRCDIR)/l_net/x_socket.o               \
+            \
+            $(SRCDIR)/l_math/x_math.o                \
+            \
+            $(SRCDIR)/l_cl/l_cl.o
+
+ 
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:    init  corelib.a
+fast:   corelib.a
+
+corelib.a:  $(OBJETOS)
+	@echo "   Building library :"
+	@echo "     corelib.a ..." 
+	@ar -rc $(LIBNAME)
+	@ar -rs $(LIBNAME) $(OBJETOS)
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    core libreries" 
+	@echo "   ----------------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJETOS) 
+	@rm -fr $(LIBNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+
+# ---------------------- corelib' MAKEFILE -------------------- 
+

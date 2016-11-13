@@ -1,0 +1,81 @@
+#---------------------- wpplib' MAKEFILE --------------------
+ 
+
+
+
+# --- 1.- Opciones del sistema base ---
+
+#-----------------------
+# Constantes en SUNOS
+#-----------------------
+ 
+CC        = gcc
+LIBPATH   = -L/usr/lib
+HPATH     = -I. -I..
+SRCDIR    = .
+CFLAGS    = -g   -Wall -D__SUNOS__
+LIBLINK   =
+
+
+
+# --- 2.- Perfil de la libreria -------
+
+LIBNAME   = wpplib.a
+OBJETOS   = \
+            $(SRCDIR)/l_cl_wpp/l_wpp_msg.o                        \
+            $(SRCDIR)/l_cl_wpp/l_wpp_opt.o                        \
+            $(SRCDIR)/l_cl_wpp/l_wpp_cl.o                         \
+            \
+            $(SRCDIR)/l_data/l_log.o                              \
+            $(SRCDIR)/l_data/l_ws_manager.o                       \
+            \
+            $(SRCDIR)/l_robot/l_ctbot.o                           \
+            $(SRCDIR)/l_robot/l_lsbot.o                           \
+            $(SRCDIR)/l_robot/l_sbbot.o                           \
+            $(SRCDIR)/l_robot/l_dlbot.o
+
+
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:    init  wpplib.a
+fast:   wpplib.a
+
+wpplib.a:  $(OBJETOS)
+	@echo "   Creando library :"
+	@echo "     wpplib.a ..." 
+	@ar -rc $(LIBNAME)
+	@ar -rs $(LIBNAME) $(OBJETOS)
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    web libreries" 
+	@echo "   ---------------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJETOS) 
+	@rm -fr $(LIBNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+# ---------------------- wpplib' MAKEFILE --------------------
+

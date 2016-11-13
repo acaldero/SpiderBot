@@ -1,0 +1,68 @@
+# ------------------------------ MAKEFILE -----------------------
+ 
+
+
+# --- 1.- Opciones del sistema base ---
+
+MAKE          = make
+SRCDIR        = .
+DIR_PROG      = lib  wcopy  wdir  wcat  mklocal  SpiderBot  wtools
+EXE_WTOOLS    = wtools/wtools    \
+                SpiderBot/SpiderBot
+EXE_PROGS     = wcopy/wcopy      \
+                wdir/wdir        \
+                wcat/wcat        \
+                mklocal/mklocal  \
+                wtools/wtools    \
+                SpiderBot/SpiderBot
+
+
+# --- 2.- Reglas de compilacion -------
+
+all:    init  webprog  finalize
+fast:         webprog
+
+
+webprog:
+	@set -e; for i in $(DIR_PROG);  do cd $$i; $(MAKE)  -f Makefile.sunos fast; cd ..; done
+
+clean: 
+	@echo "   Removing trash..."
+	@set -e; for i in $(DIR_PROG);  do cd $$i; $(MAKE)  -f Makefile.sunos clean; cd ..; done
+	@echo "   Trash succesfully removed !."
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    Web Utilities" 
+	@echo "   ---------------" 
+	@echo "" 
+
+finalize:
+	@echo ""
+	@echo " -> With 'make install', web utilities will be"
+	@echo "    copied where you need"
+	@echo ""
+
+install:  init
+	@./install.sh
+
+help: init
+	@echo ""
+	@echo "   Makefile params :"
+	@echo ""
+	@echo "   - make -f Makefile.sunos"
+	@echo "     compile program"
+	@echo ""
+	@echo "   - make -f Makefile.sunos  install"
+	@echo "     install program"
+	@echo ""
+	@echo "   - make -f Makefile.sunos  help"
+	@echo "     this screen"
+	@echo ""
+
+
+
+# ----------------------------- END MAKEFILE -------------------- 
+

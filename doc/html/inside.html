@@ -1,0 +1,191 @@
+<HTML>
+
+
+<HEAD>
+  	<META 
+		HTTP-EQUIV="Content-Type" 
+		CONTENT="text/html; charset=iso-8859-1"
+	/>
+	<META 
+		NAME="Author" 
+		CONTENT="acaldero"
+	/>
+	<TITLE>Inside</TITLE>
+</HEAD>
+
+
+<BODY 
+	TEXT="#000000" 
+	BGCOLOR="#FFFFFF" 
+	LINK="#006600" 
+	VLINK="#669966" 
+	ALINK="#990000" 
+	BACKGROUND="icons/inside_bg.jpg"
+/>
+
+<P></P>
+
+<CENTER>
+<TT><FONT COLOR="#CC0000"><FONT SIZE=+4>Inside SpiderBot</FONT></FONT></TT>
+</CENTER>
+
+<! ------------------------------------------------------------------- >
+
+
+<TABLE WIDTH="100%">
+
+<TR WIDTH="100%">
+<TD WIDTH="20%">
+	<TABLE BORDER="1">
+
+	<TR>
+	<TD>
+		<CENTER>
+		1 line
+		<P>&nbsp;</P><P>&nbsp;</P>
+		<P>&nbsp;</P><P>&nbsp;</P>
+		2000 lines
+		</CENTER>
+	</TD>
+	</TR>
+
+	<TR>
+	<TD>
+		<CENTER>
+		2001 lines
+		<P>&nbsp;</P><P>&nbsp;</P>
+		<P>&nbsp;</P><P>&nbsp;</P>
+		4000 lines
+		</CENTER>
+	</TD>
+	</TR>
+
+	<TR>
+	<TD>
+		<CENTER>
+		4001 lines
+		<P>&nbsp;</P><P>&nbsp;</P>
+		<P>&nbsp;</P><P>&nbsp;</P>
+		16000 lines
+		</CENTER>
+	</TD>
+	</TR>
+
+	<TR>
+	<TD>
+		<CENTER>
+		16001 lines
+		<P>&nbsp;</P><P>&nbsp;</P>
+		<P>&nbsp;</P><P>&nbsp;</P>
+		18000 lines
+		</CENTER>
+	</TD>
+	</TR>
+
+	</TABLE>
+</TD>
+<TD WIDTH="100%">
+	<TABLE BORDER="1" WIDTH="100%">
+
+	<TR>
+	<TD WIDTH="60%">
+		./SpiderBot/
+		<BR>
+		<BR>
+		A "command line" interface to L_SBBOT_DownLoad function 
+		<BR>
+		(like program sync is a interface to sync() system call)
+	</TD>
+	<TD WIDTH="60%">
+		./SpiderBot/
+		<UL>
+		<LI>./SpiderBot.c  (main program)</LI>
+		<LI>l_sbotcl.[ch]  (command line options)</LI>
+		<LI>l_sbotopt.[ch] (SpiderBot options)</LI>
+		<LI>l_sbotdl.[ch]  (call L_SBBOT_DownLoad)</LI>
+		<LI>l_sbotmsg.[ch] (help, about, thanks messages)</LI>
+		<LI>l_sbotmnu.[ch] (some new interface)</LI>
+		</UL>
+	</TD>
+	</TR>
+
+	<TR>
+	<TD WIDTH="40%">
+		./lib/wpplib/l_data/
+		<BR>
+		./lib/wpplib/l_robot/
+		<BR>
+		<BR>
+		Web Robot, as function.
+	</TD>
+	<TD WIDTH="100%">
+		./lib/wpplib/l_data/
+		<UL>
+		<LI>l_log.[ch]   (log protocol messages)</LI>
+		<LI>l_ws_manager.[ch] (manager weblib options)</LI>
+		</UL>
+		./lib/wpplib/l_robot/
+		<UL>
+		<LI>l_sbbot.[ch] (real SpiderBot, as function)</LI>
+		</UL>
+	</TD>
+	</TR>
+
+	<TR>
+	<TD WIDTH="40%">
+		./lib/weblib/l_data/
+		<BR>
+		Web Library
+	</TD>
+	<TD WIDTH="100%">
+		./lib/webib/
+		<UL>
+		<LI>l_wdt (Web Data Types: url, mime header, ...)</LI>
+		<LI>l_encode (base64, hexToDec, etc)</LI>
+		<LI>l_ws (options to use in weblib)</LI>
+		<LI>l_verbose (show progress information)</LI>
+		<LI>l_vp (virtual protocol, a generic interface)</LI>
+		<LI>l_ftp  (ftp protocol)</LI>
+		<LI>l_http (http protocol)</LI>
+		<LI>l_file (file protocol)</LI>
+		<LI>l_pop3 (pop3 protocol)</LI>
+		<LI>l_nntp (nntp protocol)</LI>
+		</UL>
+		new protocols are added using "copy and paste", in a
+		object-oriented-language is easier and best.
+                See <A HREF="protocol.html">add protocols</A> for more information.
+	</TD>
+	</TR>
+
+	<TR>
+	<TD WIDTH="40%">
+		./lib/corelib
+		<BR>
+		Basic Library
+	</TD>
+	<TD WIDTH="100%">
+		./lib/corelib/
+		<UL>
+		<LI>l_alloc  (memory manager)</LI>
+		<LI>l_string (more string functions)</LI>
+		<LI>l_net (sockets utilities)</LI>
+		<LI>l_adt (abstract data types)</LI>
+		<LI>...</LI>
+		</UL>
+	</TD>
+	</TR>
+
+	</TABLE>
+</TD>
+</TR>
+
+</TABLE>
+
+
+<! ------------------------------------------------------------------- >
+
+
+</BODY>
+
+</HTML>
+

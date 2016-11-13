@@ -1,0 +1,88 @@
+#---------------------- uilib' MAKEFILE --------------------
+ 
+
+
+
+# --- 1.- Opciones del sistema base ---
+
+#-----------------------
+# Constantes en SUNOS
+#-----------------------
+ 
+CC        = gcc
+LIBPATH   = -L/usr/lib
+HPATH     = -I. -I../
+SRCDIR    =   .
+CFLAGS    = -g  -Wall -D__SUNOS__ -D_REENTRANT
+LIBLINK   = -lpthread
+
+
+
+# --- 2.- Perfil de la libreria -------
+
+LIBNAME   = uilib.a
+OBJETOS   = \
+            $(SRCDIR)/l_apps/l_info.o            \
+            $(SRCDIR)/l_apps/l_uirc.o            \
+            $(SRCDIR)/l_cl/l_apply.o             \
+            $(SRCDIR)/l_cl/l_filter.o            \
+            $(SRCDIR)/l_wterm/l_win.o            \
+            $(SRCDIR)/l_wterm/l_wterm.o          \
+            $(SRCDIR)/l_wterm/c_wterm.o          \
+            $(SRCDIR)/l_wterm/v_term.o           \
+            $(SRCDIR)/l_wterm/v_keymap.o         \
+            $(SRCDIR)/l_browse/l_brws1.o         \
+            $(SRCDIR)/l_browse/l_menu.o          \
+            $(SRCDIR)/l_browse/l_fs.o            \
+            $(SRCDIR)/l_browse/l_wcon.o          \
+            $(SRCDIR)/l_browse/l_htxt.o          \
+            $(SRCDIR)/l_gadget/l_dialog.o        \
+            $(SRCDIR)/l_gadget/l_pb.o            \
+            $(SRCDIR)/l_gadget/l_sttbox.o        \
+            $(SRCDIR)/l_gadget/l_edtbox.o
+
+
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:    init  uilib.a
+fast:   uilib.a
+
+uilib.a:  $(OBJETOS)
+	@echo "   Creando libreria :"
+	@echo "     uilib.a ..." 
+	@ar -rc $(LIBNAME)
+	@ar -rs $(LIBNAME) $(OBJETOS)
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    User Interfaz Library" 
+	@echo "   -----------------------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJETOS) 
+	@echo "   Trash succesfully removed !."
+
+
+
+
+# ---------------------- uilib' MAKEFILE --------------------
+

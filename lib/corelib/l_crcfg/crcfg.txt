@@ -1,0 +1,35 @@
+
+
+  .........................................................................
+  .                                                                       .
+  .   DEFINICIONES                                                        .
+  .   PARA                  'defines activados' normalmente               .
+  .   PORTABILIDAD          en makefiles especificos.                     .
+  .   DEL CODIGO                                                          .
+  .                                                                       .
+  . ----------------- 1.- Sistemas operativos --------------------------- .
+  . #define __MSDOS__                                                     .
+  . #define __LINUX__                                                     .
+  . #define __SUNOS__                                                     .
+  . #define __AIX__                                                       .
+  .                                                                       .
+  . ----------------- 2.- Compiladores ---------------------------------- .
+  . #define __BCC__                                                       .
+  . #define __GCC__                                                       .
+  . #define __TCC__                                                       .
+  .                                                                       .
+  . ----------------- 3.- Librerias ------------------------------------- .
+  .                                                                       .
+  . ----------------- 4.- Opciones Internas ----------------------------- .
+  .                                                                       .
+  . ----------------- 5.- Configuracion Librerias ----------------------- .
+  . --- file system ---						          .
+  . #define __MFS__							  .
+  .   c_FAT                                                               .
+  .   c_XFS                                                               .
+  .   c_LDOS                                                              .
+  .   c_LDIRENT                                                           .
+  .                                                                       .
+  .........................................................................
+*/
+

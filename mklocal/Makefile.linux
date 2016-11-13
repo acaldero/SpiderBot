@@ -1,0 +1,81 @@
+# ------------------------- mklocal' MAKEFILE ------------------------ 
+
+
+
+# --- 1.- Opciones del sistema base ---
+
+
+#-----------------------
+# Constantes en LINUX
+#-----------------------
+
+CC        = gcc
+LIBPATH   = -L/usr/lib
+HPATH     = -I.. -I../lib/
+SRCDIR    = .
+CFLAGS    = -g   -Wall -D_TRACE_ON_ -D_COOL_ -D__LINUX__ -D_REENTRANT
+LIBLINK   = ../lib/wpplib/wpplib.a ../lib/weblib/weblib.a ../lib/corelib/corelib.a -lm
+ 
+
+
+# --- 2.- Perfil del programa ---------
+
+PROGNAME  = mklocal
+OBJETOS   = \
+            $(SRCDIR)/l_mkcl.o     \
+            $(SRCDIR)/l_mkmsg.o    \
+            $(SRCDIR)/l_mkopt.o    \
+            $(SRCDIR)/l_mklocal.o  \
+            $(SRCDIR)/mklocal.o
+
+ 
+
+# --- 3.- Reglas de compilacion -------
+
+all:  init mklocal tips
+fast: mklocal
+ 
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    MkLocal" 
+	@echo "   ---------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a`
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o:   %.c
+	@echo "     $< ..."
+	@$(CC) $(CFLAGS) $(HPATH) -c $<   -o $@
+
+mklocal:  $(OBJETOS)
+	@echo "   Linking :"
+	@echo "     "$(PROGNAME)
+	@$(CC)    $(CFLAGS) -o $(PROGNAME) $(OBJETOS) $(LIBLINK)
+	@sync
+
+tips:
+	@echo "   TIPS :"
+	@echo "" 
+	@echo "   write 'mklocal' at prompt, and i hope you enjoy." 
+	@echo "" 
+
+
+
+clean:
+	@echo "   Removing trash..."
+	@rm -fr $(OBJETOS)
+	@rm -fr $(PROGNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+
+# ------------------------ END mklocal' MAKEFILE --------------------- 
+

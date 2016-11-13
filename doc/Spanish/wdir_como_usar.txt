@@ -1,0 +1,61 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Como usar wdir ---------------------------------------------------------
+
+   *  wdir es un robot para inspeccionar url's dentro de una pagina
+      web. El primer uso seria :
+    
+          ./wdir.exe -url www.cool.com
+    
+   *  Si estas un poco loco (:-O) puedes usar :
+    
+          ./wdir.exe -url www.cool.com -makerelative -global
+    
+      Por defecto, wdir solo inspecciona url's de www.cool.com;
+
+   *  Si presiona "Ctrl-C" o el ordenador se bloquea o ...
+      ( ejem... ver las leyes de morphy ), NO pasa NaDa, puedes
+      continuar transfiriendo sin perder los url's que ya estan
+      completos. Usa :
+
+          ./wdir.exe -resume resume.www.cool.com
+
+      en 'resume.<servidor web>', wdir guarda todo lo necesario
+      para continuar. Puede editar el fichero, pero se cuidadoso
+      con las modificaciones que hagas.
+
+   *  Facil es limitar la porcion de web a inspeccionar,
+      Se puede limitar por cantidad en bytes :
+
+          ./wdir.exe -url www.mysite.web -maxbytes 1000000
+
+      En este ejemplo, solo se transfiere un MegaByte (1000000)
+      Tambien se puede limitar el numero de url's a inspeccionar :
+
+          ./wdir.exe -url www.mysite.web -maxurls 1000
+
+   *  wdir tambien permite el uso de un proxy :
+
+          ./wdir.exe -url www.mysite.web -proxy myproxy.web:8080
+
+      En la version actual (060), cuando el intermediario informa del
+      error 'error 400 Cache error...', wdir NO se conecta al servidor
+      directamente, simplemente descarta esa url.
+      ( si se usa '-rentry', intentara pedirselo al intermediario otra
+        vez, cada cierto tiempo )
+
+   *  Todavia estas leyendo ??!!
+
+          ./wdir.exe -help
+
+      Mira las opciones, aprende usandolo...
+
+
+  ------------------------------------------------------------------------
+
+
+  

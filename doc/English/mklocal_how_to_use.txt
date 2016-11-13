@@ -1,0 +1,26 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  How to use -------------------------------------------------------------
+
+   *  Normally you will get absolute url's (like /icon/img.gif) 
+      that do not let browse easy. No problem, mklocal can translate 
+      absolute into relative. (like ./../icon/img.gif). 
+      Use :
+    
+          ./mklocal.exe -dir www.cool.com
+
+   *  Perhaps, you want all url in your mirror, be browsable.
+      'mklocal' ONLY translate url that are at 'www.cool.com' and
+      rest are "live" links, you can connect Internet.
+
+          ./mklocal.exe -global -dir www.cool.com
+
+
+  ------------------------------------------------------------------------
+
+
+  

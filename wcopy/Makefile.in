@@ -1,0 +1,70 @@
+#----------------------- wcopy' MAKEFILE --------------------- 
+
+
+# --- 1.- Options for base system ---
+
+
+CC        = @CC@
+LIBPATH   = -L/usr/lib
+HPATH     = -I.. -I../lib/
+SRCDIR    = ..
+CFLAGS    = @DEVEL@ -Wall -D@OS@
+LIBLINK   = ../lib/wpplib/wpplib.a ../lib/weblib/weblib.a ../lib/corelib/corelib.a  @LIBLINK@
+
+
+
+# --- 2.- library profile distribution -------
+
+PROGNAME  = ./wcopy
+OBJECT    = \
+	    $(SRCDIR)/wcopy/l_wcpdl.o        \
+            $(SRCDIR)/wcopy/l_wcpmsg.o       \
+            $(SRCDIR)/wcopy/l_wcopy.o        \
+            $(SRCDIR)/wcopy/wcopy.o 
+
+ 
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:      init  wcopy
+refast:   clean wcopy
+fast:     wcopy
+
+wcopy:   $(OBJECT)
+	@echo "   Linking :"
+	@echo "     "$(PROGNAME)
+	@$(CC)  $(CFLAGS) -o $(PROGNAME)   $(OBJECT) $(LIBLINK)
+	@sync
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    wcopy"
+	@echo "   -------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJECT) 
+	@rm -fr $(PROGNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+# ----------------------------------------------------------------
+

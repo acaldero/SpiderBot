@@ -1,0 +1,68 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  How to use -------------------------------------------------------------
+
+   *  wcopy is a normal robot for download a web site 
+      without problems.
+      First use is :
+    
+          ./wcopy.exe -verbose -url www.cool.com
+    
+      That make a mirror in the current directory, of web pages at 
+      'www.cool.com' :
+
+             www.cool.com/.
+             www.cool.com/..
+             www.cool.com/index.html
+             ...
+
+   *  If you are a litte crazy (:-O) you can use :
+    
+          ./wcopy.exe -url www.cool.com -global
+    
+      By default, wcopy only download urls from www.cool.com;
+      with '-global' wcopy will NOT stop in this machine.
+      (Not for my hard disk ;->)
+
+   *  If you press Ctrl-C or reboot you computer or ... *see morphy laws* 
+      NO PROBLEM, you can continue downloading without loss what 
+      you got. Use for recover :
+
+          ./wcopy.exe -verbose -resume resume.www.cool.com
+
+      in 'resume.<site>', wcopy save all necesary to recover
+      gracelly. You can edit this file, but be very, very carefully.
+
+   *  It is easy limit amount of web to download :
+      you can limit amount of byte you want to download with :
+
+          ./wcopy.exe -url www.mysite.web -verbose -maxbytes 1000000
+
+      Limit is set at one Megabyte (1000000). 
+      Also you can limit the number of urls :
+
+          ./wcopy.exe -url www.mysite.web -verbose -maxurls 1000
+
+   *  Need speed ?, wcopy support proxy :
+
+          ./wcopy.exe -url www.mysite.web -verbose -proxy myproxy.web:8080
+
+      In this version (060), when proxy report 'error 400 Cache error...'
+      wcopy DO NOT try connect directly, simply skip url 
+      (or try again download url, if you use '-rentry')
+
+   *  why are you still reading ??!!
+
+          ./wcopy.exe -help
+
+      See other options, learn by yourself using it...
+
+
+  ------------------------------------------------------------------------
+
+
+  

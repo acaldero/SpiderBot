@@ -1,0 +1,46 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Como se usa ------------------------------------------------------------
+
+  ***  SpiderBot es una SOLUCION TEMPORAL :
+
+      Algunos ftp anonimos tienen mirrors de servidores web para
+      su consulta sin necesidad de conexion a red (desconectado).
+
+      Nuevas incorporacion al protocolo HTTP mejorara el rendimiento
+      Tanto el HTTP/1.1 como futuras versiones incorporaran mejoras
+      para pedir un conjunto de paginas comprimidas en una sola conexion.
+      Asi como otras tecnicas por encima como WebDifusion (WebCasting)
+      en la que los navegadores solo traen las ultimas modificaciones
+      de las paginas, con respecto a las almacenadas en nuestro disco
+      duro (en adelante llamado PEQUE~NO, muy peque~no disco duro)
+
+      Hay ya algunas publicaciones con CD-ROM's (o DVD's) en los que
+      se encuentran en parte de ellos mirror de los sitios mas populares
+      (que permiten su publicacion)
+
+      Has visto el TELETEXTO ?
+      La television digital ofrecera en breve canales donde el teletexto
+      sean paginas web, asi como canales en los que se difunde unicamente
+      paginas web (el servidor xyz se vera a las 16:00 y 18:00...)
+
+      Un poco mas tarde veremos la introduccion de 'webfs' (web file system)
+      un sistema de ficheros parecido al 'nfs', extendiendo la
+      funcionalidad de 'nfs' a aspectos insopechados. Podras montar su 
+      sitio favorito como un directorio, y el sistema operativo permitira
+      un acceso transparente y eficiente.
+
+      Como ves, hay muchas formas de optener informacion SIN usar
+      telefono para acceder a Internet. Internet debe ser algo mas
+      que dinero que desaparece, debe ser la informacion que tu
+      necesitas cuando tu la necesitas y rentable.
+
+
+  ------------------------------------------------------------------------
+
+
+  

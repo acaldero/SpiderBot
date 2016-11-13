@@ -1,0 +1,158 @@
+<HTML>
+
+
+<HEAD>
+  	<META 
+		HTTP-EQUIV="Content-Type" 
+		CONTENT="text/html; charset=iso-8859-1"
+	/>
+	<META 
+		NAME="Author" 
+		CONTENT="acaldero"
+	/>
+	<TITLE>Inside</TITLE>
+</HEAD>
+
+
+<BODY 
+	TEXT="#000000" 
+	BGCOLOR="#FFFFFF" 
+	LINK="#006600" 
+	VLINK="#669966" 
+	ALINK="#990000" 
+	BACKGROUND="icons/inside_bg.jpg"
+/>
+
+<P></P>
+
+<CENTER>
+<TT><FONT COLOR="#CC0000"><FONT SIZE=+4>Inside Protocol</FONT></FONT></TT>
+</CENTER>
+
+<! ------------------------------------------------------------------- >
+
+<TT>
+<FONT COLOR="#CC0000">
+<FONT SIZE=+4>
+<PRE>
+
+I try do same in all protocols. Perhaps, in a object-oriented-language
+as JAVA or C++, this program will become more redable, less code line
+(saving near 50%), and more natural. But at beginning, we choose C and
+start with a prototype, learning what is the best way... when we go
+back from others options.
+
+
+For example, we start coding pop3 protocol; What we do ?
+
+$ cd lib/weblib
+$ cp -R l_ftp l_pop3
+$ cd l_pop3
+
+In all files in 'l_pop3', will need change FTP word to POP3,
+and all file need to be renamed :
+$ mv l_ftp_response.c l_pop3_response.c
+$ mv l_ftp_response.h l_pop3_response.h
+$ mv ...
+
+$ vi l_pop3_response.h
+next, we change 't_pop3_response'. All protocols can be sumarize
+with to fields : a boolean 'ok', if command execution go well and
+a string 'msg' with response from server. In FTP and HTTP protocols,
+inside 'msg' are a special code; In HTTP, response is like a list
+of string' pairs : mime-header-field and value. In POP3, response
+in only a line. ("+OK more_details" or "-ERR more_info") and we only
+need 'ok' and 'msg' fields.
+In L_POP3_RESPONSE_Skip function, we need add a param : a boolean
+'isMultiLine'. In FTP, multiline response are signed inside mensage,
+but in POP3 multiline response ocurrs only in a few special command.
+
+$ vi l_pop3_response.c
+If command success, response begin with "+OK", we change code that
+in FTP scan to "200" :
+
+        pop3r.ok   = TRUE ;
+        if (lineBuff[0] == '-')
+            pop3r.ok = FALSE ;
+        if (lineBuff[0] == '+')
+            pop3r.ok = TRUE ;
+
+and we update code that use t_pop3_response type, now has only
+two fields.
+In L_POP3_RESPONSE_Skip, multiline response are diferent :
+
+        if (isMultiLine == TRUE)
+           {
+             while ( L_LINE_dot_enter(lineBuff) == FALSE )
+             {
+               eof = X_SOCKET_ReadLine( sd,
+                                        lineBuff,
+                                        sizeof(lineBuff) ) ;
+               if (eof == TRUE)
+                   return (pop3r.ok) ;
+             }
+           }
+
+$ vi l_pop3_log.c
+now L_POP3_LOG_PrintResponse will use only 'pop3r->msg'
+
+$ vi l_pop3_command.[ch]
+we need remove some functions like L_POP3_COMMAND_nlst,
+L_POP3_COMMAND_port, etc. This functions are not valid in POP3.
+And we can add some new functions, like L_POP3_COMMAND_list,
+L_POP3_COMMAND_noop...
+
+
+$ vi l_pop3_download.[ch]
+now, we has two entities : mailbox and mail (like a directory
+and a file from it). We need change L_POP3_DOWNLOAD_DownLoadUrl
+in order to call L_POP3_BOX_DownLoadBox if url is like a mailbox
+or L_POP3_MAIL_DownLoadMail if url is like a mail from a mailbox.
+
+$ cd l_pop3_download
+$ mv l_pop3_download_file.c l_pop3_download_mail.c
+$ mv l_pop3_download_file.h l_pop3_download_mail.h
+$ mv l_pop3_download_dir.c l_pop3_download_box.c
+$ mv l_pop3_download_dir.h l_pop3_download_box.h
+$ vi l_pop3_download_box.c
+we remove some code, because POP3 is very similar to FTP
+but easier.
+
+$ cd ../..
+$ vi Makefile.linux Makefile.sunos
+Add a new entry in 'OBJETOS' variable. Copy and paste from
+other protocol, and change object names :
+
+            $(SRCDIR)/l_pop3/l_pop3_log.o                         \
+            $(SRCDIR)/l_pop3/l_pop3_download.o                    \
+            $(SRCDIR)/l_pop3/l_pop3_response.o                    \
+            $(SRCDIR)/l_pop3/l_pop3_server.o                      \
+            $(SRCDIR)/l_pop3/l_pop3_command.o                     \
+            $(SRCDIR)/l_pop3/l_pop3_download/l_pop3_box.o         \
+            $(SRCDIR)/l_pop3/l_pop3_download/l_pop3_mail.o        \
+
+and ...
+$ make -f Makefile.linux fast
+
+When you can compile new code, edit this files :
+l_vp/l_vp_download.c
+l_vp/l_vp_server.c
+You will see that here is where is call specific code. Here
+we try show a 'virtual protocol'. We need add code and when
+a url has a url->protocol like 'pop3', is when we call pop3
+code.
+
+
+</PRE>
+</FONT>
+</FONT>
+</TT>
+
+
+<! ------------------------------------------------------------------- >
+
+
+</BODY>
+
+</HTML>
+

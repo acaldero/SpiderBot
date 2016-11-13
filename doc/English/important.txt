@@ -1,0 +1,42 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Important --------------------------------------------------------------
+
+  ***  SpiderBot is TEMPORAL SOLUTION :
+
+      Some anonymous ftp, have 'mirrors' of web sites, that you can
+      browse offline.
+
+      Also will see 'webcasting'. Your site (a computer where url are
+      almost 90% local to computer) have a file that is a database. A
+      database of all contents, last modified time, and all information
+      that a browse can get, and checking with files in your cache it
+      know url needs update.
+
+      There are some magazine, with CD-ROM's (or DVD's) where you can
+      find mirror of famous web sites. 
+
+      Do you see TELETEXT ? Digital-TV will offer channels where Teletext
+      are web pages, you see a site at 16:00 and next at 16:10 ...
+
+      In a few months, we will see 'webfs' (web file systems) that are
+      like 'nfs', but connectionless. You can mount you favorite
+      site in a directory, and Operating System let you access files
+      like you are use this robot. It use cache, and will update files
+      only if necesary. References to others places will be automount
+      at use.
+
+      If you see, there are may ways to get your information WITHOUT
+      use Internet. Use Internet need money to connect you, 
+      perhaps is posible get your information faster and 
+      cheaper... (ChEaPeR ??? ;->)
+
+
+  ------------------------------------------------------------------------
+
+
+  

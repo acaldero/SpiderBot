@@ -1,0 +1,35 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Como usar mklocal ------------------------------------------------------
+
+   *  Normalmente al hacer un mirror, obtienes url's absolutos
+      (como /icon/img.gif) que no dejan navergar usando tu
+      navegador de web favorito, si no te lo instalas como 
+      el web de tu maquina. Pero no hay problema, mklocal
+      traducira url's absolutos a relativos (./../icon/img.gif)
+      Usar :
+    
+          ./mklocal.exe -dir www.cool.com
+
+   *  Quizas, quieras que todos los url es tu mirror sean navegables
+      pues mklocal por defecto solo traslada los url's que pertenecen
+      al mirror 'www.cool.com'. Para ello usar :
+
+          ./mklocal.exe -global -dir www.cool.com
+
+   *  Otro detalle mas; mklocal explora todos los ficheros en busca 
+      de url's que cambiar. Para que sea mas rapido, puedes indicarle
+      que no inspeccione dentro de los ficheros binarios comunes
+      ( como ficheros con extension 'gif', 'jpg', 'mov', ... )
+
+          ./mklocal.exe -skipbin -global -dir www.cool.com
+
+
+  ------------------------------------------------------------------------
+
+
+  

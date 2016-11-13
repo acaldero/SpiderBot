@@ -1,0 +1,73 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Como usarlo ------------------------------------------------------------
+
+   *  SpiderBot es el tipico robot para bajarse un web si
+      muchos problemas.
+      Tiene las minimas opciones necesarias el 80% de las
+      veces.
+      El primer uso seria :
+    
+          ./SpiderBot.exe -url www.cool.com
+    
+      Que creara un directorio donde estemos llamado 'www.cool.com' y
+      colocara en el un mirror del sitio web, conservando los
+      directorios del servidor web :
+
+             www.cool.com/.
+             www.cool.com/..
+             www.cool.com/index.html
+             www.cool.com/icons/clock.html
+             ...
+
+   *  Puedes pararlo usando Ctrl-C. En este caso o bien si se
+      cae el ordenador o ... (ver leyes de morphy)
+      No hay ningun problema, puedes continuar bajandote a partir
+      del fichero en que se paro. Para ello :
+
+          ./SpiderBot.exe  -resume resume.www.cool.com
+
+      en 'resume.<servidor web>', SpiderBot guardara todo lo necesario
+      para continuar gracilmente. Puedes editar este fichero si quieres
+      cambiar alguna opcion, eliminar urls, mover urls, etc, PERO con
+      cuidado de respetar su formato.
+
+   *  Es facil limitar la cantidad de datos a traer :
+
+          ./SpiderBot.exe -url www.mysite.web  -maxbytes 1000000
+
+      se limita la cantidad a traer a un Megabyte (1000000). 
+
+   *  Necesita velocidad, SpiderBot puede sacar partido a
+      un intermediario ( proxy ) :
+
+          ./SpiderBot.exe -url www.mysite.web -verbose -proxy myproxy.web:8080
+
+      En la version actual (059), cuando el intermediario informa del
+      error 'error 400 Cache error...', SpiderBot NO se conecta al servidor
+      directamente, simplemente descarta esa url.
+      ( si se usa '-rentry', intentara pedirselo al intermediario otra
+        vez, cada cierto tiempo )
+
+   *  Por defecto, se usa el protocolo HTTP/1.0. Con :
+
+          ./SpiderBot.exe -url www.mysite.web -detecthttp
+
+      SpiderBot intentara detectar la version mas alta que entiende
+      el servidor y trabajar con ella.
+
+   *  Todavia estas leyendo ?, usa :
+
+          ./SpiderBot.exe -help
+
+      y aprende usandolo...
+      
+
+  ------------------------------------------------------------------------
+
+
+  

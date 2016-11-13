@@ -1,0 +1,50 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Como usar wcat ---------------------------------------------------------
+
+   *  wcat es un robot para imprimir en pantalla las paginas de 
+      un sitio web. El primer uso seria :
+    
+          ./wcat.exe -url www.cool.com
+    
+   *  Si estas un poco loco (:-O) puedes usar :
+    
+          ./wcat.exe -url www.cool.com -makerelative -global
+    
+      Por defecto, wcat solo inspecciona url's de www.cool.com;
+
+   *  Si presiona "Ctrl-C" o el ordenador se bloquea o ...
+      ( ejem... ver las leyes de morphy ), NO pasa NaDa, puedes
+      continuar imprimiendo en pantalla en el ultimo url. Usa :
+
+          ./wcat.exe -resume resume.www.cool.com
+
+      en 'resume.<servidor web>', wcat guarda todo lo necesario
+      para continuar. Puede editar el fichero, pero se cuidadoso
+      con las modificaciones que hagas.
+
+   *  Facil es limitar la porcion de web a inspeccionar,
+      Se puede limitar por cantidad en bytes :
+
+          ./wcat.exe -url www.mysite.web -maxbytes 1000000
+
+      En este ejemplo, solo se transfiere un MegaByte (1000000)
+      Tambien se puede limitar el numero de url's a inspeccionar :
+
+          ./wcat.exe -url www.mysite.web -maxurls 1000
+
+   *  Todavia estas leyendo ??!!
+
+          ./wcat.exe -help
+
+      Mira las opciones, aprende usandolo...
+
+
+  ------------------------------------------------------------------------
+
+
+  

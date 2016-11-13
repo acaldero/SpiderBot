@@ -1,0 +1,55 @@
+
+
+  .........................................................................
+  .                                                                       .
+  .   DEFINICIONES                                                        .
+  .   PARA                  'defines activados' normalmente               .
+  .   PORTABILIDAD          en makefiles especificos.                     .
+  .   DEL CODIGO                                                          .
+  .                                                                       .
+  . ----------------- 1.- Sistemas operativos --------------------------- .
+  . #define __MSDOS__                                                     .
+  . #define __LINUX__                                                     .
+  . #define __SUNOS__                                                     .
+  . #define __AIX__                                                       .
+  .                                                                       .
+  . ----------------- 2.- Compiladores ---------------------------------- .
+  . #define __BCC__                                                       .
+  . #define __GCC__                                                       .
+  . #define __TCC__                                                       .
+  .                                                                       .
+  . ----------------- 3.- Librerias ------------------------------------- .
+  . #define __LCURSES__                                                   .
+  . #define __LNCURSES__                                                  .
+  .                                                                       .
+  . ----------------- 4.- Opciones Internas ----------------------------- .
+  . definidas como opciones en los makefiles ...                          .
+  .   #define _TRACE_ON_  <codigo para depuracion>                        .
+  .   #define _COOL_      <colores y caracteres mejorados>                .
+  .   #define _DOS_ASM_   <funciones en ensamblador>                      .
+  .                                                                       .
+  . ----------------- 5.- Configuracion Librerias ----------------------- .
+  . --- tratamientos teclado ---                                          .
+  . #define __MTECLADO__                                                  .
+  .   c_PCKB                                                              .
+  .   c_VT100KB                                                           .
+  .   c_xKEYCURSES                                                        .
+  . --- tratamientos graficos ---                                         .
+  . #define __MGRPH__                                                     .
+  .   c_BCGRAPH                                                           .
+  .   c_BC86GRPH                                                          .
+  . --- tratamientos video ---                                            .
+  . #define __MVIDEO__                                                    .
+  .   c_CONIO                                                             .
+  .   c_SEC_ESCAPE                                                        .
+  .   c_xCURSES                                                           .
+  .   c_BCGTEXT                                                           .
+  .   c_BC_INT10                                                          .
+  . --- tratamientos teclas ---                                           .
+  . #define __KEYMAPPING__                                                .
+  .   c_PC                                                                .
+  .   c_ESCAPE                                                            .
+  .                                                                       .
+  .........................................................................
+*/
+

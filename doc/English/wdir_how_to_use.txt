@@ -1,0 +1,57 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  How to use -------------------------------------------------------------
+
+   *  wdir is a normal robot for scan url inside a web site's pages 
+      First use is :
+    
+          ./wdir.exe -url www.cool.com
+    
+   *  If you are a litte crazy (:-O) you can use :
+    
+          ./wdir.exe -url www.cool.com -makerelative -global
+    
+      By default, wdir only scan urls from www.cool.com;
+
+   *  If you press Ctrl-C or reboot you computer or ... *see morphy laws* 
+      NO PROBLEM, you can continue downloading without loss what 
+      you got. Use for recover :
+
+          ./wdir.exe -resume resume.www.cool.com
+
+      in 'resume.<site>', wdir save all necesary to recover
+      gracelly. You can edit this file, but be very, very carefully.
+
+   *  It is easy limit amount of web to scan :
+      you can limit amount of byte you want to download with :
+
+          ./wdir.exe -url www.mysite.web -maxbytes 1000000
+
+      Limit is set at one Megabyte (1000000). 
+      Also you can limit the number of urls :
+
+          ./wdir.exe -url www.mysite.web -maxurls 1000
+
+   *  Need speed ?, wdir support proxy :
+
+          ./wdir.exe -url www.mysite.web -proxy myproxy.web:8080
+
+      In this version (060), when proxy report 'error 400 Cache error...'
+      wdir DO NOT try connect directly, simply skip url 
+      (or try again download url, if you use '-rentry')
+
+   *  why are you still reading ??!!
+
+          ./wdir.exe -help
+
+      See other options, learn by yourself using it...
+
+
+  ------------------------------------------------------------------------
+
+
+  

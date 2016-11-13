@@ -1,0 +1,81 @@
+#----------------------- wtools' MAKEFILE --------------------- 
+
+
+# --- 1.- Options for base system ---
+
+
+CC        = @CC@
+LIBPATH   = -L/usr/lib
+HPATH     = -I..  -I../lib/
+SRCDIR    = ..
+CFLAGS    = @DEVEL@ -Wall -D@OS@
+LIBLINK   = ../lib/wpplib/wpplib.a ../lib/weblib/weblib.a ../lib/corelib/corelib.a @LIBLINK@
+
+
+
+# --- 2.- library profile distribution -------
+
+PROGNAME  = ./wtools
+OBJECT    = \
+            $(SRCDIR)/wcat/l_wctdl.o        \
+            $(SRCDIR)/wcat/l_wctmsg.o       \
+            $(SRCDIR)/wcat/l_wcat.o         \
+            $(SRCDIR)/wcopy/l_wcpdl.o       \
+            $(SRCDIR)/wcopy/l_wcpmsg.o      \
+            $(SRCDIR)/wcopy/l_wcopy.o       \
+            $(SRCDIR)/wdir/l_wlsdl.o        \
+            $(SRCDIR)/wdir/l_wlsmsg.o       \
+            $(SRCDIR)/wdir/l_wdir.o         \
+            $(SRCDIR)/mklocal/l_mkcl.o      \
+            $(SRCDIR)/mklocal/l_mkmsg.o     \
+            $(SRCDIR)/mklocal/l_mklocal.o   \
+            $(SRCDIR)/mklocal/l_mkopt.o     \
+            $(SRCDIR)/wtools/l_wtmsg.o      \
+            $(SRCDIR)/wtools/wtools.o 
+
+ 
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:      init  wtools
+refast:   clean wtools
+fast:     wtools
+
+wtools:   $(OBJECT)
+	@echo "   Linking :"
+	@echo "     "$(PROGNAME)
+	@$(CC)  $(CFLAGS) -o $(PROGNAME)   $(OBJECT) $(LIBLINK)
+	@sync
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    wtools"
+	@echo "   --------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJECT) 
+	@rm -fr $(PROGNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+# ----------------------------------------------------------------
+

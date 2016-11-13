@@ -1,0 +1,43 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  Compilar ---------------------------------------------------------------
+  
+      Si usas el mejor y mas grande sistema operativo del mundo ...
+      (si es LINUX) :
+      
+         make -f Makefile.linux 
+         make -f Makefile.linux install
+         ~/bin/SpiderBot -help
+
+      Tambien se adapto los "makefiles" a Solaris 2.5 :
+
+         make -f Makefile.sunos 
+         make -f Makefile.sunos install
+         ~/bin/SpiderBot -help
+
+      Para otros entornos, tendreis que crear los makefile 
+      usando los actuales como patron.
+
+      
+  Problemas --------------------------------------------------------------
+
+    * En WEB_UTILITIES/lib/corelib/l_basic/l_system/c_system.h
+      es donde se importan TODOS las librerias de sistema. Alguno de
+      los problemas se encuentran cuando en su maquina, por ejemplo,
+      "inet/tcp.h" no esta, pero si "netinet/tcp.h".
+
+    * si compilas con '-DHAVE_PTHREAD_H' en "corelib.linux",
+      deberas cambiar en los ficheros "wdir.linux", "wcopy.linux" y
+      "wtools.linux" el valor de "LIBLINK" de esta forma :
+
+      ...
+      LIBLINK   = <valor inicial>  /usr/local/libpthread.a
+      ...
+
+
+  ------------------------------------------------------------------------
+

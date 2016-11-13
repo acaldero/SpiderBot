@@ -1,0 +1,151 @@
+#---------------------- weblib' MAKEFILE --------------------
+ 
+
+
+
+# --- 1.- Opciones del sistema base ---
+
+#-----------------------
+# Constantes en SUNOS
+#-----------------------
+ 
+CC        = gcc
+LIBPATH   = -L/usr/lib
+HPATH     = -I. -I..
+SRCDIR    = .
+CFLAGS    = -g   -Wall -D__SUNOS__
+LIBLINK   =
+
+
+
+# --- 2.- Perfil de la libreria -------
+
+LIBNAME   = weblib.a
+OBJETOS   = \
+            $(SRCDIR)/l_ws/l_wsstream.o                           \
+            $(SRCDIR)/l_ws/l_setws.o                              \
+            \
+            $(SRCDIR)/l_file/l_file_log.o                         \
+            $(SRCDIR)/l_file/l_file_server.o                      \
+            $(SRCDIR)/l_file/l_file_upload.o                      \
+            $(SRCDIR)/l_file/l_file_download.o                    \
+            $(SRCDIR)/l_file/l_file_command.o                     \
+            $(SRCDIR)/l_file/l_file_download/l_file_file.o        \
+            $(SRCDIR)/l_file/l_file_download/l_file_dir.o         \
+            \
+            $(SRCDIR)/l_ftp/l_ftp_log.o                           \
+            $(SRCDIR)/l_ftp/l_ftp_response.o                      \
+            $(SRCDIR)/l_ftp/l_ftp_server.o                        \
+            $(SRCDIR)/l_ftp/l_ftp_download.o                      \
+            $(SRCDIR)/l_ftp/l_ftp_command.o                       \
+            $(SRCDIR)/l_ftp/l_ftp_download/l_ftp_file.o           \
+            $(SRCDIR)/l_ftp/l_ftp_download/l_ftp_dir.o            \
+            \
+            $(SRCDIR)/l_http/l_http_log.o                            \
+            $(SRCDIR)/l_http/l_http_response.o                       \
+            $(SRCDIR)/l_http/l_http_server.o                         \
+            $(SRCDIR)/l_http/l_http_server/l_http_server_id.o        \
+            $(SRCDIR)/l_http/l_http_server/l_http_server_header.o    \
+            $(SRCDIR)/l_http/l_http_server/l_http_server_disallow.o  \
+            $(SRCDIR)/l_http/l_http_download.o                       \
+            $(SRCDIR)/l_http/l_http_download/l_http09_command.o      \
+            $(SRCDIR)/l_http/l_http_download/l_http10_command.o      \
+            $(SRCDIR)/l_http/l_http_download/l_http11_command.o      \
+            $(SRCDIR)/l_http/l_http_download/l_http09_page.o         \
+            $(SRCDIR)/l_http/l_http_download/l_http10_page.o         \
+            $(SRCDIR)/l_http/l_http_download/l_http11_page.o         \
+            \
+            $(SRCDIR)/l_nntp/l_nntp_log.o                         \
+            $(SRCDIR)/l_nntp/l_nntp_response.o                    \
+            $(SRCDIR)/l_nntp/l_nntp_server.o                      \
+            $(SRCDIR)/l_nntp/l_nntp_download.o                    \
+            $(SRCDIR)/l_nntp/l_nntp_command.o                     \
+            $(SRCDIR)/l_nntp/l_nntp_download/l_nntp_newsgroup.o   \
+            $(SRCDIR)/l_nntp/l_nntp_download/l_nntp_group.o       \
+            $(SRCDIR)/l_nntp/l_nntp_download/l_nntp_news.o        \
+            \
+            $(SRCDIR)/l_pop3/l_pop3_log.o                         \
+            $(SRCDIR)/l_pop3/l_pop3_download.o                    \
+            $(SRCDIR)/l_pop3/l_pop3_response.o                    \
+            $(SRCDIR)/l_pop3/l_pop3_server.o                      \
+            $(SRCDIR)/l_pop3/l_pop3_command.o                     \
+            $(SRCDIR)/l_pop3/l_pop3_download/l_pop3_box.o         \
+            $(SRCDIR)/l_pop3/l_pop3_download/l_pop3_mail.o        \
+            \
+            $(SRCDIR)/l_finger/l_finger_log.o                           \
+            $(SRCDIR)/l_finger/l_finger_response.o                      \
+            $(SRCDIR)/l_finger/l_finger_server.o                        \
+            $(SRCDIR)/l_finger/l_finger_download.o                      \
+            $(SRCDIR)/l_finger/l_finger_command.o                       \
+            $(SRCDIR)/l_finger/l_finger_download/l_finger_user.o        \
+            $(SRCDIR)/l_finger/l_finger_download/l_finger_machine.o     \
+            \
+            $(SRCDIR)/l_vp/l_vp_server.o                          \
+            $(SRCDIR)/l_vp/l_vp_download.o                        \
+            \
+            $(SRCDIR)/l_verbose/l_verbose_download.o              \
+            $(SRCDIR)/l_verbose/l_verbose_log.o                   \
+            \
+            $(SRCDIR)/l_encode/l_base64.o                         \
+            $(SRCDIR)/l_encode/l_hex.o                            \
+            \
+            $(SRCDIR)/l_url/l_url.o                               \
+            $(SRCDIR)/l_url/l_urlfile.o                           \
+            $(SRCDIR)/l_url/l_urlstr.o                            \
+            $(SRCDIR)/l_url/l_urlstream.o                         \
+            $(SRCDIR)/l_url/l_urlxml.o                            \
+            \
+            $(SRCDIR)/l_wdt/l_mime.o                              \
+            $(SRCDIR)/l_wdt/l_mimestream.o                        \
+            $(SRCDIR)/l_wdt/l_urlli.o                             \
+            $(SRCDIR)/l_wdt/l_urllistream.o                       \
+            $(SRCDIR)/l_wdt/l_disallowli.o
+
+
+
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:    init  weblib.a
+fast:   weblib.a
+
+weblib.a:  $(OBJETOS)
+	@echo "" 
+	@echo "   Creando library :"
+	@echo "     weblib.a ..." 
+	@ar -rc $(LIBNAME)
+	@ar -rs $(LIBNAME) $(OBJETOS)
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    web libreries" 
+	@echo "   ---------------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo -n -e "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJETOS) 
+	@rm -fr $(LIBNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+
+# ---------------------- weblib' MAKEFILE --------------------
+

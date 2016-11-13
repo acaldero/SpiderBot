@@ -1,0 +1,145 @@
+
+
+MENUITEM MENU000
+BEGIN
+ MENUITEM Help.
+ HELP     Try_help
+ MENUITEM SpiderBot.
+ HELP     Go_download_process 
+ BEGIN
+   MENUITEM 1._setup_options...
+   HELP     Setup_main_options_you_want
+   BEGIN
+     MENUITEM  url
+     HELP      Url_where_web_side_story_start.
+     MENUITEM  resume
+     HELP      Resume_file_to_continue.
+     MENUITEM  maxbytes
+     HELP      Limit_bytes_to_download.
+     MENUITEM  maxurls
+     HELP      Limit_urls_to_download.
+     MENUITEM  proxy
+     HELP      Proxy_throw_get.
+     MENUITEM  user:password
+     HELP      with_no_echo
+   END
+   MENUITEM 2._setup_flags...
+   HELP     Setup_main_flags_you_want
+   BEGIN
+     MENUITEM  samemachine
+     HELP      get_from_same_path_(default)__and_same_machine.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  makequery
+     HELP      download_cgi-bin_querys.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  rentry
+     HELP      if_errors_rentry_in_20_seconds.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  skipel
+     HELP      ignore_forbidden_urls.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  detectHttp
+     HELP      try_use_http/1.1_if_posible.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  onlyHttp
+     HELP      if_found_a_ftp,_nntp,_..._url,_discard_it.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  makeRelative
+     HELP      change_url_to_offline_navigation.
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+     MENUITEM  skipBin
+     HELP      skip_common_binary_files_but_not_html_files
+     BEGIN
+       MENUITEM  on
+       HELP      on
+       MENUITEM  off
+       HELP      off
+     END
+   END
+   MENUITEM 3._start_downLoad.
+   HELP     Start_download_process 
+ END
+ MENUITEM Exit.
+ HELP     Exit_from_program...(also_pressing_esc_key)
+END
+
+
+NODEID " - HELP - "
+COORDENATE  3.2.78.24
+BEGIN
+    SpiderBot(1.60.x)
+   -------------------
+
+    Copyright (C) 1997/1998 Alejandro Calderon Mateos
+    SpiderBot comes with ABSOLUTELY NO WARRANTY;
+    This is free software, and you are welcome to redistribute
+    it under certain conditions.
+    (See GNU Library General Public License).
+
+
+    Welcome...
+
+    - Don't worry, user interface is easy.
+      But only work with keys (sorry, :-<) :
+
+        Menu
+           Up/Down -> move content.
+           Enter ---> select current option
+           Esc -----> close current window
+
+        Hypertext
+           Up/Down/AvPag/RePag/Inicio/End -> scroll texto
+           Right ---> go next option
+           Left ----> go back option
+           Enter ---> select this option
+           Esc -----> exit from hipertext
+
+    - Menu options are :
+
+        . Help
+        . SpiderBot
+            . options
+            . flags
+            . go_download
+        . Exit
+
+        First, you must setup options and flags; then
+        do 'go_download' and when you will finished,
+        do 'exit'. (:->)
+END
+

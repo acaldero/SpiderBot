@@ -1,0 +1,45 @@
+
+
+
+
+  59.c a 60.0
+ -------------
+
+     - no usar ".exe" como extension
+     - permitir elegir el directorio de instalacion
+     - mas detalles durante la transferencia
+     - si se usa proxy, la lista de exclusion 
+       (aquellos directorios que el servidor no quiere
+        que entre robots) contenida en '/robots.txt',
+       se trae a traves del proxy, en lugar de directamente.
+     - wtool funciona como se penso.
+     - si se invoca 'SpiderBot' sin parametros, se usa
+       un peque;o entorno.
+     - ahora, mklocal (y SpiderBot) no tocan links como :
+         - mailto:foo@foo.com
+         - news:comp.unix.wizards
+
+
+  A ir haciendo... 
+ ------------------
+
+     - usar muchas de las nuevas optiones de HTTP/1.1
+     - sumar soporte para fsp (file service protocol) (umm!?)
+     - como la translacion de referencias mantiene el
+       nombre del sitio web ( "./../this.site.com/foo.html" )
+       es posible crear otro comando "mkglobal" que sea
+       lo opuesto a mklocal.
+     - nuevo flag para spiderBot, de forma que cuando
+       se transfiere desde www.linux.org, (por ejemplo)
+       se pueda elegir si las referencias a otros sitios
+       web han de transladarse como locales o no
+       (
+         ... href="http://www.linuxhq.com" :
+         local : ../../www.linuxhq.com/index.html
+         global : http://www.linuxhq.com
+       )
+     - usar fichero de configuracion
+     - el usuario pueda configurar nombre/tama;o/... de
+       los ficheros log.... y resume....
+
+

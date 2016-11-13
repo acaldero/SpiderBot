@@ -1,0 +1,49 @@
+ 
+  Copyright 1997-1998
+  acaldero@laurel.datsi.fi.upm.es  
+  (Alejandro Calderon Mateos)
+   
+
+  How to use -------------------------------------------------------------
+
+   *  wcat is a normal robot for print at stdout a web site's pages 
+      First use is :
+    
+          ./wcat.exe -url www.cool.com
+    
+   *  If you are a litte crazy (:-O) you can use :
+    
+          ./wcat.exe -url www.cool.com -makerelative -global
+    
+      By default, wcat only scan urls from www.cool.com;
+
+   *  If you press Ctrl-C or reboot you computer or ... *see morphy laws* 
+      NO PROBLEM, you can continue printing without at last page.
+      Use for continue :
+
+          ./wcat.exe -resume resume.www.cool.com
+
+      in 'resume.<site>', wcat save all necesary to recover
+      gracelly. You can edit this file, but be very, very carefully.
+
+   *  It is easy limit amount of web to scan and print :
+      you can limit amount of byte you want to download with :
+
+          ./wcat.exe -url www.mysite.web -maxbytes 1000000
+
+      Limit is set at one Megabyte (1000000). 
+      Also you can limit the number of urls :
+
+          ./wcat.exe -url www.mysite.web -maxurls 1000
+
+   *  why are you still reading ??!!
+
+          ./wcat.exe -help
+
+      See other options, learn by yourself using it...
+
+
+  ------------------------------------------------------------------------
+
+
+  

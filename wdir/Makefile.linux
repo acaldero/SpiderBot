@@ -1,0 +1,75 @@
+#----------------------- wdir' MAKEFILE --------------------- 
+
+
+# --- 1.- Options for base system ---
+
+
+#--------------------
+# Consts for LINUX
+#--------------------
+ 
+CC        = gcc
+LIBPATH   = -L/usr/lib
+HPATH     = -I..  -I../lib/
+SRCDIR    = ..
+CFLAGS    = -g    -Wall -D__LINUX__ -D_REENTRANT
+LIBLINK   = ../lib/wpplib/wpplib.a ../lib/weblib/weblib.a ../lib/corelib/corelib.a
+#LIBLINK   = ../lib/wpplib/wpplib.a ../lib/weblib/weblib.a ../lib/corelib/corelib.a /usr/lib/libpthread.a
+
+
+
+# --- 2.- library profile distribution -------
+
+PROGNAME  = ./wdir
+OBJECT    = \
+	    $(SRCDIR)/wdir/l_wlsdl.o        \
+            $(SRCDIR)/wdir/l_wlsmsg.o       \
+            $(SRCDIR)/wdir/l_wdir.o         \
+            $(SRCDIR)/wdir/wdir.o 
+
+ 
+
+#--------------------------
+# Reglas de compilacion ...
+#-------------------------- 
+
+all:      init  wdir
+refast:   clean wdir
+fast:     wdir
+
+wdir:   $(OBJECT)
+	@echo "   Linking :"
+	@echo "     "$(PROGNAME)
+	@$(CC)  $(CFLAGS) -o $(PROGNAME)   $(OBJECT) $(LIBLINK)
+	@sync
+
+init:
+	@echo [2J 
+	@echo "[1;1f" 
+	@echo "" 
+	@echo "    wdir"
+	@echo "   ------" 
+	@echo "" 
+	@echo "   Computer  :"
+	@echo "     "`uname -a` 
+	@echo "   Options   :"
+	@echo "     "$(CFLAGS)
+	@echo "   Directory :"
+	@echo "     "$(HPATH)
+	@echo "   Compiling :"
+
+%.o: %.c
+	@echo "     $< ..." 
+	@$(CC)  $(CFLAGS) $(HPATH) -c $< -o $@ 
+
+
+clean: 
+	@echo "   Removing trash..."
+	@rm -fr $(OBJECT) 
+	@rm -fr $(PROGNAME)
+	@echo "   Trash succesfully removed !."
+
+
+
+# ----------------------------------------------------------------
+

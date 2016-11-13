@@ -1,0 +1,146 @@
+
+
+
+dnl
+dnl Web_Utilities's configure.in
+dnl ----------------------------
+dnl
+dnl   Process this file with autoconf to produce
+dnl   a configure script.
+dnl
+
+
+dnl
+dnl begin
+dnl
+AC_INIT(SpiderBot/l_sbotcl.c)
+
+
+dnl
+dnl Checks for programs.
+dnl
+AC_PROG_INSTALL
+AC_PROG_LEX
+AC_PROG_MAKE_SET
+AC_PROG_YACC
+
+
+dnl
+dnl Checks for header files.
+dnl
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(fcntl.h limits.h malloc.h strings.h sys/ioctl.h sys/time.h termio.h unistd.h)
+
+
+dnl
+dnl Checks for typedefs, structures, and compiler characteristics.
+dnl
+AC_C_CONST
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+
+
+dnl
+dnl Checks for library functions.
+dnl
+AC_PROG_GCC_TRADITIONAL
+AC_FUNC_MEMCMP
+dnl AC_FUNC_SETVBUF_REVERSED
+AC_TYPE_SIGNAL
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS(getcwd gethostname gettimeofday mkdir putenv select socket strdup strspn strtol)
+
+
+dnl
+dnl Canonicalize the configuration name.
+dnl
+AC_CANONICAL_SYSTEM
+AC_MSG_CHECKING("target");
+if test "$target_os" = ""
+then
+  LIBLINK=""
+  DEVEL=""
+  OS="__LINUX__"
+  CC="cc"
+  AC_SUBST(OS)
+  AC_SUBST(CC)
+  AC_SUBST(DEVEL)
+  AC_SUBST(LIBLINK)
+  AC_MSG_RESULT("no defined \(used linux cfg\)");
+fi
+if test "$target_os" = "Linux-gnu" -o "$target_os" = "linux-gnu"
+then
+  LIBLINK="-lpthread -lm"
+  DEVEL="-g"
+  OS="__LINUX__"
+  CC="gcc"
+  AC_SUBST(OS)
+  AC_SUBST(CC)
+  AC_SUBST(DEVEL)
+  AC_SUBST(LIBLINK)
+  AC_MSG_RESULT("Linux");
+fi
+if test "$target_os" = "Sunos" -o "$target_os" = "sunos"
+then
+  LIBLINK="-lsocket -lnsl"
+  DEVEL="-g"
+  OS="__SUNOS__"
+  CC="gcc"
+  AC_SUBST(OS)
+  AC_SUBST(CC)
+  AC_SUBST(DEVEL)
+  AC_SUBST(LIBLINK)
+  AC_MSG_RESULT("Sunos");
+fi
+if test "$target_os" = "Solaris" -o "$target_os" = "solaris"
+then
+  LIBLINK="-lsocket -lnsl"
+  DEVEL="-g"
+  OS="__SOLARIS__"
+  CC="gcc"
+  AC_SUBST(OS)
+  AC_SUBST(CC)
+  AC_SUBST(DEVEL)
+  AC_SUBST(LIBLINK)
+  AC_MSG_RESULT("Solaris");
+fi
+if test "$target_os" = "AIX" -o "$target_os" = "aix"
+then
+  DEVEL="-g"
+  OS="__AIX__"
+  CC="gcc"
+  AC_SUBST(OS)
+  AC_SUBST(CC)
+  AC_SUBST(DEVEL)
+  AC_SUBST(LIBLINK)
+  AC_MSG_RESULT("AIX");
+fi
+
+
+dnl
+dnl Global version
+dnl
+WEB_UTILITIES_VERSION="1.60.005"
+AC_SUBST(WEB_UTILITIES_VERSION)
+
+
+dnl
+dnl Output files.
+dnl
+AC_OUTPUT(Makefile 
+          lib/Makefile
+          lib/corelib/Makefile
+          lib/weblib/Makefile
+          lib/wpplib/Makefile
+          lib/uilib/Makefile
+          SpiderBot/Makefile
+          mklocal/Makefile
+          wcat/Makefile
+          wcopy/Makefile
+          wdir/Makefile
+          wtools/Makefile)
+
+
