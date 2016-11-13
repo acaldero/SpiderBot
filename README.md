@@ -1,6 +1,6 @@
 # SpiderBot
 
-To download SpiderBot(1.60.007), please click here.
+Yo can download SpiderBot(1.60.007) through the official GitHub repository.
 
 . . After you download SpiderBot, with "tar zxvf SpiderBot.tar.gz" you can uncompress source code.  
 . . Then, "cd WebUtilities" and "make -f Makefile.linux"  
@@ -13,71 +13,73 @@ If you want a w95/w98 version, you need Cygnus Develop Kit (cdk.exe).
 SpiderBot.tgz is a "pack" with several robots:
 
 * WCAT
+
   - % wcat -url www.linuxhq.com/index.html -maxurls 1  | more
 
-      send to stdout page index.html.
+      It will send the page index.html to the stdout.
 
-      warning-log:
-        - -delay params don´t work !   (1.60.004 fix it)
-        - maxurls 2 download only 1    (1.60.004 fix it)
+      warnings:
+        - -delay params don´t work !  (1.60.004 fix it)
+        - -maxurls 2 download only 1  (1.60.004 fix it)
 
 
   - % wcat -url http://www.linuxhq.com
 
-      send to stdout all pages from www.linuxhq.com.
+      It will send all pages from www.linuxhq.com to stdout.
 
-      warning-log:
-        - binary file is also send!. (use -skipbin)
+      warnings:
+        - binary file will also be sent, if you want to avoid it please use -skipbin.
 
 
-    - ( %wcat -url www.linuxhq.com -in1page > index.html )
+  - ( %wcat -url www.linuxhq.com -in1page > index.html )
 
-       send all web site in one page (index.html here), leaving binaries inside of a directory tree.
+      It will send the full web site to a single one page (index.html here), leaving binaries inside of a directory tree.
        ( ./www.linuxhq.com/icons/... )
 
-       warning-log:
+      warnings:
         - errors (like not found pages) are saved in files
           umm, i need study error handler deeper... (:->)
 
 
 * WDIR
-  - %wdir -url www.linux.org | grep http
 
-    print all URL that this site has.
+  - % wdir -url www.linux.org | grep http
 
-    warning-log:
-      - fail to scan "mailto:" hrefs (1.60.004 fix it)
+    It will print all URLs that this site has.
+
+    warnings:
+       - fail to scan "mailto:" hrefs (1.60.004 fix it)
 
 
 * WCOPY
+
   - % wcopy -url www.linux.org -skipel -makequery >& log1 &
 
-    make a mirror from www.linux.org, rewriting links for local browsing (-makerelative)  
+    It will make a mirror from www.linux.org, rewriting links for local browsing (-makerelative)  
     skipping exclusion list (-skipel => exclusion list is a the-facto standard for
-    describing the paths inside a file called www.linux.org/robots.txt have to be exclude
-    from the robot work). Also wcopy make querys to cgi, storing its response (-makequery).
+    describing the paths inside a file called www.linux.org/robots.txt have to be exclude from the robot work). 
+    Also wcopy makes queries to cgi-bin storing its response (-makequery).
     If you want to view the robot output, just type :
 
-    tail -f log1
+    % tail -f log1
 
-        If you want to stop wcopy :
+    If you want to stop wcopy, you can use:
 
-        % /usr/sbin/fuser log1
-        log1:     2094c
-        % kill -9 2094c
+    % /usr/sbin/fuser log1
+    log1:     2094c
+    
+    % kill -9 2094c
+	
   - % wcopy -resume resume.www.linux.org -makerelative -skipel -makequery >& log1 &
 
-     resume wcopy from where it was stopped.  
+     It will resume wcopy from where it was stopped.  
 
-     warning-log:
+     warnings:
        - AVOID that first url are redirect to a second url.
-         if second url is from other web-site, wcopy stop.
-		(if command line option '-allsite' is NOT present)
+         if second url is from other web-site, wcopy stop (if command line option '-allsite' is NOT present).
          if second url is from same web-site, wcopy will
-         skiped check next urls must be from same path.
-		(if command line option '-allmachine' is NOT present)
+         skiped check next urls must be from same path (if command line option '-allmachine' is NOT present)
          (fix in next version)
-
 
 * MKLOCAL
 
